@@ -1,23 +1,45 @@
 package com.github.aabida.tennis;
 
-import java.util.Scanner;
-
 public class TennisGame {
 
-    private static final Scanner scan = new Scanner(System.in);
+    private final String firstPlayerName;
+    private final String secondPlayerName;
+    private final ScoreProvider scoreProvider;
 
-    public static void main(String[] args) {
-        System.out.println("===========================================");
-        System.out.println("||     Welcome to Simple Tennis Game !   ||");
-        System.out.println("===========================================");
+    private ArbitratorService arbitrator;
 
-        System.out.println("Please enter the name of the first player : ");
-        String firstPlayerName = scan.nextLine();
+    public TennisGame(String firstPlayerName, String secondPlayerName, ScoreProvider scoreProvider) {
+        this.firstPlayerName = firstPlayerName;
+        this.secondPlayerName = secondPlayerName;
+        this.scoreProvider = scoreProvider;
+    }
 
-        System.out.println("Please enter the name of the second player :");
-        String secondPlayerName = scan.nextLine();
+    public void initGame() {
+        Player firstPlayer = new Player(firstPlayerName);
+        Player secondPlayer = new Player(secondPlayerName);
 
-        System.out.println(firstPlayerName);
-        System.out.println(secondPlayerName);
+        arbitrator = new ArbitratorService(firstPlayer, secondPlayer);
+    }
+
+    public void runGame() {
+        do {
+            int next = scoreProvider.readNext();
+            if (next == 1) {
+                arbitrator.incrementFirstPlayerScore();
+            }
+            else if (next == 2) {
+                arbitrator.incrementSecondPlayerScore();
+            }
+            else {
+                System.out.println("You entered a wrong value");
+            }
+
+            System.out.println(arbitrator.echoScore());
+        }
+        while (!gameFinished());
+    }
+
+    public boolean gameFinished() {
+        return arbitrator.getGameWinner() != null;
     }
 }
