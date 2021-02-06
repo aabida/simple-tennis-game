@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.aabida</groupId>
-    <artifactId>simple-tennis-challenges</artifactId>
+    <artifactId>simple-tennis-game</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Simple tennis game</name>
