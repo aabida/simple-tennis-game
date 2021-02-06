@@ -5,22 +5,21 @@ import java.util.Objects;
 public class Player {
 
     private final String name;
-    private Score score;
+    private int score;
 
-    public Player(String name, Score score) {
+    public Player(String name) {
         this.name = name;
-        this.score = score;
     }
 
     public String getName() {
         return name;
     }
 
-    public Score getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
