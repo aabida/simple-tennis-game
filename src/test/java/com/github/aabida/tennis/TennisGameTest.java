@@ -1,5 +1,6 @@
 package com.github.aabida.tennis;
 
+import com.github.aabida.tennis.data.provider.ScoreProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,15 @@ public class TennisGameTest {
     @Test
     public void runGame_when_first_player_wins_and_assert_game_finished() {
         when(scoreProvider.readNext()).thenReturn(1);
+
+        sut.runGame();
+
+        assertTrue(sut.gameFinished());
+    }
+
+    @Test
+    public void runGame_when_second_player_wins_and_assert_game_finished() {
+        when(scoreProvider.readNext()).thenReturn(2);
 
         sut.runGame();
 

@@ -1,8 +1,8 @@
-package com.github.aabida.tennis;
+package com.github.aabida.tennis.data.provider;
 
 import java.util.Scanner;
 
-public class ScoreProvider {
+public class KeyboardScoreProvider implements ScoreProvider {
 
     private static final Scanner scan = new Scanner(System.in);
 

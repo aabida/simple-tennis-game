@@ -1,5 +1,7 @@
 package com.github.aabida.tennis;
 
+import com.github.aabida.tennis.data.provider.ScoreProvider;
+
 public class TennisGame {
 
     private final String firstPlayerName;
@@ -31,7 +33,7 @@ public class TennisGame {
                 arbitrator.incrementSecondPlayerScore();
             }
             else {
-                System.out.println("You entered a wrong value");
+                System.out.println(next + " is a wrong input value");
             }
 
             System.out.println(arbitrator.echoScore());

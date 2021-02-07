@@ -1,8 +1,10 @@
 package com.github.aabida.tennis;
 
+import com.github.aabida.tennis.data.provider.KeyboardScoreProvider;
+
 import java.util.Scanner;
 
-public class MainGame {
+public class GameInitializer {
 
     private static final Scanner scan = new Scanner(System.in);
 
@@ -19,7 +21,7 @@ public class MainGame {
         System.out.println("Please enter the name of the second player :");
         String secondPlayerName = scan.nextLine();
 
-        TennisGame game = new TennisGame(firstPlayerName, secondPlayerName, new ScoreProvider());
+        TennisGame game = new TennisGame(firstPlayerName, secondPlayerName, new KeyboardScoreProvider());
         game.initGame();
         game.runGame();
     }
