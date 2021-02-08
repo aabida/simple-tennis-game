@@ -9,11 +9,7 @@ public class GameInitializer {
     private static final Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("===============================================");
-        System.out.println("===============================================");
-        System.out.println("||||    Welcome to Simple Tennis Game !    ||||");
-        System.out.println("===============================================");
-        System.out.println("===============================================");
+        greetings();
 
         System.out.println("Please enter the name of the first player : ");
         String firstPlayerName = scan.nextLine();
@@ -24,5 +20,13 @@ public class GameInitializer {
         TennisGame game = new TennisGame(firstPlayerName, secondPlayerName, new KeyboardScoreProvider());
         game.initGame();
         game.runGame();
+    }
+
+    private static void greetings() {
+        System.out.println("===============================================");
+        System.out.println("===============================================");
+        System.out.println("||||    Welcome to Simple Tennis Game !    ||||");
+        System.out.println("===============================================");
+        System.out.println("===============================================");
     }
 }
