@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class TennisGameTest {
 
@@ -27,6 +26,7 @@ public class TennisGameTest {
         sut.runGame();
 
         assertTrue(sut.gameFinished());
+        verify(scoreProvider, times(4)).readNext();
     }
 
     @Test
@@ -36,5 +36,6 @@ public class TennisGameTest {
         sut.runGame();
 
         assertTrue(sut.gameFinished());
+        verify(scoreProvider, times(4)).readNext();
     }
 }
