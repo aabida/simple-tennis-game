@@ -24,20 +24,6 @@ public class ArbitratorService {
         incrementScore(secondPlayer, firstPlayer);
     }
 
-    public void incrementScore(Player winner, Player theOtherPlayer) {
-        int winnerScore = winner.getScore();
-        int theOtherPlayerScore = theOtherPlayer.getScore();
-
-        winner.setScore(++winnerScore);
-
-        if (winnerScore == 4 && theOtherPlayerScore <= 2) {
-            this.gameWinner = winner;
-        }
-        else if (winnerScore >= 3 && theOtherPlayerScore >= 3 && winnerScore >= theOtherPlayerScore + 2) {
-            this.gameWinner = winner;
-        }
-    }
-
     public String echoScore() {
         if (gameWinner != null) {
             return String.format("%s wins", gameWinner.getName());
@@ -50,6 +36,20 @@ public class ArbitratorService {
             return String.format("Advantage for %s", advantageFor.getName());
         }
         return String.format("%s (%s) / (%s) %s", firstPlayer.getName(), translateSimpleScore(firstPlayer.getScore()), translateSimpleScore(secondPlayer.getScore()), secondPlayer.getName());
+    }
+
+    private void incrementScore(Player winner, Player theOtherPlayer) {
+        int winnerScore = winner.getScore();
+        int theOtherPlayerScore = theOtherPlayer.getScore();
+
+        winner.setScore(++winnerScore);
+
+        if (winnerScore == 4 && theOtherPlayerScore <= 2) {
+            this.gameWinner = winner;
+        }
+        else if (winnerScore >= 3 && theOtherPlayerScore >= 3 && winnerScore >= theOtherPlayerScore + 2) {
+            this.gameWinner = winner;
+        }
     }
 
     private boolean isDeuce() {
